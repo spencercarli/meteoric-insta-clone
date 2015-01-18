@@ -12,7 +12,11 @@
 
   {{#ionView}}
     {{#ionContent}}
-      Content goes here
+      {{#ionList class="my-class"}}
+        {{#each user}}
+          <h2>{{profile.name}}</h2>
+        {{/each}}
+      {{/ionList}}
     {{/ionContent}}
   {{/ionView}}
 
