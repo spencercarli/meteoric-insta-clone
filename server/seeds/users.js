@@ -23,7 +23,7 @@ Meteor.startup(function() {
       },
       avatarUrl: function() { return Random.choice(avatars); },
       website: function() { return 'http://' + Fake.word() + '.com' } ,
-      description: function() { return Fake.sentence(); }
+      description: function() { return Fake.sentence(30); }
     }
   });
 

@@ -13,8 +13,16 @@
   {{#ionView}}
     {{#ionContent}}
       {{#ionList class="my-class"}}
-        {{#each user}}
-          <h2>{{profile.name}}</h2>
+        {{#each photo}}
+          <div class="row">
+            <img src="{{url}}" alt="">
+          </div>
+          <div class="row">
+            {{likes}}
+          </div>
+          <div class="row">
+            {{description}}
+          </div>
         {{/each}}
       {{/ionList}}
     {{/ionContent}}
