@@ -1,3 +1,19 @@
 <template name="home">
-  
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Ionstagram</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='archive'}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      Content goes here
+    {{/ionContent}}
+  {{/ionView}}
+
 </template>
