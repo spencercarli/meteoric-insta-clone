@@ -17,3 +17,11 @@ Router.route('/', {
 Router.route('/explore', {
   name: 'explore'
 });
+
+Router.route('/activity', {
+  name: 'activity'
+});
+
+Router.route('/profile', {
+  name: 'profile'
+});
