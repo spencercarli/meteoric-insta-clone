@@ -1,0 +1,17 @@
+<template name="explore">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Explore</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+  <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+    {{> ionIcon icon='archive'}}
+  </button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <h1>Explore Page</h1>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

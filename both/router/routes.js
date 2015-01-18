@@ -13,3 +13,7 @@ Router.route('/', {
     };
   }
 });
+
+Router.route('/explore', {
+  name: 'explore'
+});
