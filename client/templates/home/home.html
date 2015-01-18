@@ -5,23 +5,67 @@
   {{/contentFor}}
 
   {{#contentFor "headerButtonRight"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+    <!-- <button class="button button-clear pull-left" data-ion-menu-toggle="left">
       {{> ionIcon icon='archive'}}
-    </button>
+    </button> -->
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
       {{#ionList class="my-class"}}
         {{#each photo}}
-          <div class="row">
-            <img src="{{url}}" alt="">
-          </div>
-          <div class="row">
-            {{likes}}
-          </div>
-          <div class="row">
-            {{description}}
+          <div class="photo">
+            {{#with owner}}
+              <div class="row">
+                <div class="col col-10">
+                  <img class="avatar" src="{{profile.avatarUrl}}" alt="">
+                </div>
+                <div class="col col-center">
+                  {{profile.username}}
+                </div>
+                <div class="col col-20 col-center">
+                  {{> ionIcon icon='clock'}} {{../timeAgo}}
+                </div>
+              </div>
+            {{/with}}
+
+            <div class="row thumbnail" data-action="like-photo" style="background:url({{url}});"></div>
+
+            <div class="row">
+              <div class="col col-10">
+                {{> ionIcon icon='heart'}}
+              </div>
+              <div class="col">
+                {{likes}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col col-10">
+                {{> ionIcon icon='chatbubble'}}
+              </div>
+              <div class="col">
+                {{description}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col col-20">
+                <button class="button button-stable button-small" data-action="like">
+                    {{> ionIcon icon='heart'}} Like
+                </button>
+              </div>
+              <div class="col col-40">
+                <button class="button button-stable button-small" data-action="comment">
+                  {{> ionIcon icon='chatbubble'}} Comment
+                </button>
+              </div>
+              <div class="col">
+                <button class="button button-stable button-small pull-right" data-action="more">
+                  {{> ionIcon icon='more'}}
+                </button>
+              </div>
+            </div>
           </div>
         {{/each}}
       {{/ionList}}

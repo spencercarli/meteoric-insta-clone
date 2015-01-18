@@ -31,3 +31,23 @@
 .loading-container .loading {
   font-size: 25px;
 }
+
+/* Add */
+.pull-right {
+  float: right;
+}
+
+.photo {
+  margin-bottom: 20px;
+  .thumbnail {
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100vw; /* 20% of the viewport width */
+    height: 100vw;
+  }
+}
+
+.avatar {
+  border-radius: 100%;
+  width: 100%;
+}
