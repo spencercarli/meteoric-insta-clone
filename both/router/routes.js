@@ -87,6 +87,22 @@ Router.route('/profile', {
   }
 });
 
+Router.route('/comments/:_id', {
+  name: 'comments',
+  controller: 'InController',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('comments', this.params._id)
+    ];
+  },
+  data: function() {
+    return {
+      photo: this.params._id,
+      comment: Comments.find({}, {sort: { createdAt: 1 }})
+    };
+  }
+});
+
 Router.route('/account', {
   name: 'account',
   controller: 'OutController',

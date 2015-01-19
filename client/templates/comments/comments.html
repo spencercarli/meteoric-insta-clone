@@ -1,0 +1,39 @@
+<template name="comments">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="home"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Comments</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#each comment}}
+        {{comment}}
+      {{/each}}
+
+      {{#ionList class=""}}
+        {{#each item}}
+          {{#ionItem}}
+            <p>{{comment}}</p>
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+
+      <div class="list">
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Add a comment..." focus>
+          </label>
+          <button class="button button-small button-balanced" data-action="send">
+            Send
+          </button>
+        </div>
+
+      </div>
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

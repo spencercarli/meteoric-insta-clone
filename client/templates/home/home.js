@@ -18,9 +18,10 @@ Template.home.events({
     Meteor.call('Photos.like', this._id, Meteor.userId());
   },
 
-  'click [data-action=comment]': function(e, tmp) {
-    alert('Not Implement Yet');
-  },
+  // 'click [data-action=comment]': function(e, tmp) {
+  //   console.log()
+  //   Router.go('comments', {_id: this._id});
+  // },
 
   'click [data-action=more]': function(e, tmp) {
     IonActionSheet.show({
