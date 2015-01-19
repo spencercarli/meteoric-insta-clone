@@ -1,18 +1,6 @@
 // CONTROLLERS
 
 InController = RouteController.extend({
-  waitOn: function() {
-    return [
-      Meteor.subscribe('users'),
-      Meteor.subscribe('photos')
-    ];
-  },
-  data: function() {
-    return {
-      user: Users.find(),
-      photo: Photos.find({}, {sort: { createdAt: -1 }})
-    };
-  },
   onBeforeAction: function() {
     if (Meteor.loggingIn()) {
       return;
@@ -47,12 +35,36 @@ OutController = RouteController.extend({
 
 Router.route('/', {
   name: 'home',
-  controller: 'InController'
+  controller: 'InController',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('users'),
+      Meteor.subscribe('photos')
+    ];
+  },
+  data: function() {
+    return {
+      user: Users.find(),
+      photo: Photos.find({}, {sort: { createdAt: -1 }})
+    };
+  },
 });
 
 Router.route('/explore', {
   name: 'explore',
-  controller: 'InController'
+  controller: 'InController',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('users'),
+      Meteor.subscribe('photos')
+    ];
+  },
+  data: function() {
+    return {
+      user: Users.find(),
+      photo: Photos.find({}, {sort: { createdAt: -1 }})
+    };
+  },
 });
 
 Router.route('/activity', {
@@ -62,7 +74,17 @@ Router.route('/activity', {
 
 Router.route('/profile', {
   name: 'profile',
-  controller: 'InController'
+  controller: 'InController',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('myPhotos', Meteor.userId())
+    ];
+  },
+  data: function() {
+    return {
+      photo: Photos.find({}, {sort: { createdAt: -1 }})
+    }
+  }
 });
 
 Router.route('/account', {

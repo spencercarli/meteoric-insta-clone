@@ -14,6 +14,9 @@ Template.onboarding.events({
 
     profile.isNew = false;
 
+    // Temp give them a profile picture
+    profile.avatarUrl = "https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg";
+
     Users.update({_id: Meteor.userId()}, {
       $set:{ profile: profile }
     });

@@ -16,14 +16,14 @@
 
 <template name="_tabs">
   {{#if isAndroid}}
-    {{#ionTabs style="android" class="tabs-background-positive tabs-color-light"}}
-      {{> ionTab title="Tab 1" path="tabs.one" icon="android-home"}}
-      {{> ionTab title="Tab 2" path="tabs.two" icon="android-search"}}
-      {{> ionTab title="Tab 3" path="tabs.three" icon="heart"}}
-      {{> ionTab title="Tab 4" path="tabs.four" icon="gear-b"}}
+    {{#ionTabs style="android" class="tabs-background-dark tabs-color-light"}}
+      {{> ionTab path="tabs.one" icon="android-home"}}
+      {{> ionTab path="tabs.two" icon="android-search"}}
+      {{> ionTab path="tabs.three" icon="heart"}}
+      {{> ionTab path="tabs.four" icon="gear-b"}}
     {{/ionTabs}}
   {{else}}
-    {{#ionTabs style="ios"}}
+    {{#ionTabs style="ios" class="tabs-background-dark tabs-color-light"}}
       {{> ionTab path="home" iconOff="ios-home-outline" iconOn="ios-home-outline"}}
       {{> ionTab path="explore" iconOff="ios-search-strong" iconOn="ios-search-strong"}}
       {{> ionTab path="camera" iconOff="ios-camera" iconOn="ios-camera"}}

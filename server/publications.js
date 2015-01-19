@@ -5,3 +5,7 @@ Meteor.publish('users', function() {
 Meteor.publish('photos', function() {
   return Photos.find()
 });
+
+Meteor.publish('myPhotos', function(userId) {
+  return Photos.find({ownerId: userId});
+});
