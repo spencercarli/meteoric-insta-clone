@@ -1,5 +1,6 @@
-Router.route('/', {
-  name: 'home',
+// CONTROLLERS
+
+InController = RouteController.extend({
   waitOn: function() {
     return [
       Meteor.subscribe('users'),
@@ -11,28 +12,66 @@ Router.route('/', {
       user: Users.find(),
       photo: Photos.find({}, {sort: { createdAt: -1 }})
     };
+  },
+  onBeforeAction: function() {
+    if (Meteor.loggingIn()) {
+      return;
+    }
+    Tracker.autorun(function() {
+      if (!Meteor.user()) {
+        return Router.go('account');
+      }
+    });
+    return this.next();
   }
+});
+
+OutController = RouteController.extend({
+  onBeforeAction: function() {
+    if (Meteor.loggingIn()) {
+      return;
+    }
+    Tracker.autorun(function() {
+      if (Meteor.user()) {
+        return Router.go('home');
+      }
+    });
+    return this.next();
+  }
+});
+
+// ROUTES
+
+Router.route('/', {
+  name: 'home',
+  controller: 'InController'
 });
 
 Router.route('/explore', {
   name: 'explore',
-  waitOn: function() {
-    return [
-      Meteor.subscribe('users'),
-      Meteor.subscribe('photos')
-    ];
-  },
-  data: function() {
-    return {
-      photo: Photos.find({}, {sort: { createdAt: -1 }})
-    };
-  }
+  controller: 'InController'
 });
 
 Router.route('/activity', {
-  name: 'activity'
+  name: 'activity',
+  controller: 'InController'
 });
 
 Router.route('/profile', {
-  name: 'profile'
+  name: 'profile',
+  controller: 'InController'
 });
+
+Router.route('/account', {
+  name: 'account',
+  controller: 'OutController',
+  layoutTemplate: 'publicLayout'
+});
+
+Router.route('/sign-out', {
+  onBeforeAction: function() {
+    Meteor.logout();
+    Router.go('account')
+    this.next();
+  }
+})
