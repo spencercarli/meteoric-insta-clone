@@ -21,6 +21,9 @@ InController = RouteController.extend({
       if (!Meteor.user()) {
         return Router.go('account');
       }
+      if (Meteor.user().profile.isNew) {
+        return Router.go('onboarding');
+      }
     });
     return this.next();
   }
@@ -65,6 +68,12 @@ Router.route('/profile', {
 Router.route('/account', {
   name: 'account',
   controller: 'OutController',
+  layoutTemplate: 'publicLayout'
+});
+
+Router.route('/onboarding', {
+  name: 'onboarding',
+  controller: 'InController',
   layoutTemplate: 'publicLayout'
 });
 

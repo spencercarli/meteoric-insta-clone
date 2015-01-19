@@ -1,0 +1,33 @@
+<template name="onboarding">
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="list">
+
+        <label class="item item-input">
+          <span class="input-label" required>Name</span>
+          <input type="text" name="name">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label" required>Username</span>
+          <input type="text" name="username">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Website</span>
+          <input type="url" name="url">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Description</span>
+          <textarea name="description"></textarea>
+        </label>
+
+      </div>
+
+      <button data-action="submit" class="button button-block button-positive">
+        Submit
+      </button>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

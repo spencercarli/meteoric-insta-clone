@@ -5,5 +5,6 @@ Users.helpers({
 });
 
 Users.before.insert(function(userId, doc){
-  doc.createdAt = new Date()
+  doc.profile.isNew = true;
+  doc.createdAt = new Date();
 });
