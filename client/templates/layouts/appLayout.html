@@ -4,7 +4,7 @@
   <![endif]-->
 
   {{#ionBody}}
-    {{> ionNavBar}}
+    {{> ionNavBar class="bar-positive"}}
 
     {{#ionNavView}}
       {{> yield}}
@@ -24,10 +24,11 @@
     {{/ionTabs}}
   {{else}}
     {{#ionTabs style="ios"}}
-      {{> ionTab title="Tab 1" path="home" iconOff="ios-home-outline" iconOn="ios-home-outline"}}
-      {{> ionTab title="Tab 2" path="explore" iconOff="ios-search-strong" iconOn="ios-search-strong"}}
-      {{> ionTab title="Tab 3" path="activity" iconOff="chatbubble" iconOn="chatbubble"}}
-      {{> ionTab title="Tab 4" path="profile" iconOff="person" iconOn="person"}}
+      {{> ionTab path="home" iconOff="ios-home-outline" iconOn="ios-home-outline"}}
+      {{> ionTab path="explore" iconOff="ios-search-strong" iconOn="ios-search-strong"}}
+      {{> ionTab path="camera" iconOff="ios-camera" iconOn="ios-camera"}}
+      {{> ionTab path="activity" iconOff="chatbubble" iconOn="chatbubble"}}
+      {{> ionTab path="profile" iconOff="person" iconOn="person"}}
     {{/ionTabs}}
   {{/if}}
 </template>

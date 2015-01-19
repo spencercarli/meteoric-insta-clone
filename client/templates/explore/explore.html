@@ -1,11 +1,18 @@
 <template name="explore">
   {{#contentFor "headerTitle"}}
-    <h1 class="title">Explore</h1>
+    <label class="item item-input explore-search">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Search">
+    </label>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
-      <h1>Explore Page</h1>
+      <div class="explore">
+        {{#each photo}}
+          <img src="{{url}}" alt="" data-action="select">
+        {{/each}}
+      </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

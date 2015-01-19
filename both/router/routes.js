@@ -1,6 +1,6 @@
 Router.route('/', {
   name: 'home',
-  subscriptions: function() {
+  waitOn: function() {
     return [
       Meteor.subscribe('users'),
       Meteor.subscribe('photos')
@@ -15,7 +15,18 @@ Router.route('/', {
 });
 
 Router.route('/explore', {
-  name: 'explore'
+  name: 'explore',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('users'),
+      Meteor.subscribe('photos')
+    ];
+  },
+  data: function() {
+    return {
+      photo: Photos.find({}, {sort: { createdAt: -1 }})
+    };
+  }
 });
 
 Router.route('/activity', {

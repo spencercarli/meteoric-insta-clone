@@ -33,6 +33,12 @@
 }
 
 /* Add */
+.bar.bar-positive {
+  background-color: #364F79;
+  border-color: #364F79;
+  background-image: linear-gradient(0deg, #364F79, #364F79 50%, transparent 50%)
+}
+
 .pull-right {
   float: right;
 }
@@ -42,7 +48,7 @@
   .thumbnail {
     background-position: center center;
     background-repeat: no-repeat;
-    width: 100vw; /* 20% of the viewport width */
+    width: 100vw;
     height: 100vw;
   }
 }
@@ -50,4 +56,26 @@
 .avatar {
   border-radius: 100%;
   width: 100%;
+}
+
+/* EXPLORE PAGE */
+.explore {
+  text-align: center;
+  padding: 10px 0;
+
+  img {
+    width: 32vw;
+    height: 32vw;
+  }
+}
+
+.explore-search {
+  width: 100%;
+  margin: 0 3px;
+  background-color: rgba(0,0,0,0.2);
+  border-color: rgba(0,0,0,0.2);
+
+  input {
+    color: #fff;
+  }
 }

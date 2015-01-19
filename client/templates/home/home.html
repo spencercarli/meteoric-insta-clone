@@ -4,14 +4,15 @@
     <h1 class="title">Ionstagram</h1>
   {{/contentFor}}
 
-  {{#contentFor "headerButtonRight"}}
-    <!-- <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+  <!-- {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
       {{> ionIcon icon='archive'}}
-    </button> -->
-  {{/contentFor}}
-
+    </button>
+  {{/contentFor}} -->
   {{#ionView}}
     {{#ionContent}}
+      {{ready}}
+
       {{#ionList class="my-class"}}
         {{#each photo}}
           <div class="photo">
