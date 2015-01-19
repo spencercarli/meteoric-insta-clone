@@ -1,0 +1,55 @@
+<template name="photoDisplay">
+  <div class="photo">
+    {{#with owner}}
+      <div class="row">
+        <div class="col col-10 col-center">
+          <img class="avatar" src="{{profile.avatarUrl}}" alt="">
+        </div>
+        <div class="col col-center">
+          {{profile.username}}
+        </div>
+        <div class="col col-center text-right">
+          {{> ionIcon icon='clock'}} {{../timeAgo}}
+        </div>
+      </div>
+    {{/with}}
+
+    <div class="row thumbnail" data-action="like-photo" style="background:url({{url}});"></div>
+
+    <div class="row">
+      <div class="col col-10">
+        {{> ionIcon icon='heart'}}
+      </div>
+      <div class="col">
+        {{likeCount}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-10">
+        {{> ionIcon icon='chatbubble'}}
+      </div>
+      <div class="col">
+        {{description}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-20">
+        <button class="button button-stable button-small" data-action="like">
+            {{> ionIcon icon='heart'}} Like
+        </button>
+      </div>
+      <div class="col col-40">
+        <a href="{{pathFor route='comments'}}" class="button button-stable button-small" data-action="comment">
+          {{> ionIcon icon='chatbubble'}} Comment
+        </a>
+      </div>
+      <div class="col">
+        <button class="button button-stable button-small pull-right" data-action="more">
+          {{> ionIcon icon='more'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</template>

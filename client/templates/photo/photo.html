@@ -1,0 +1,14 @@
+<template name="photo">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="explore"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Photo</h1>
+  {{/contentFor}}
+
+  {{#ionList class="photo"}}
+    {{ > photoDisplay }}
+  {{/ionList}}
+
+</template>

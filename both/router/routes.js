@@ -103,6 +103,17 @@ Router.route('/comments/:_id', {
   }
 });
 
+Router.route('/photo/:_id', {
+  name: 'photo',
+  controller: 'InController',
+  waitOn: function() {
+    return Meteor.subscribe('photo', this.params._id);
+  },
+  data: function() {
+    return Photos.findOne({_id: this.params._id});
+  }
+});
+
 Router.route('/account', {
   name: 'account',
   controller: 'OutController',

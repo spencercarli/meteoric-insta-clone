@@ -10,7 +10,9 @@
     {{#ionContent}}
       <div class="explore">
         {{#each photo}}
-          <img src="{{url}}" alt="" data-action="select">
+          <a href="{{pathFor 'photo'}}">
+            <img src="{{url}}" alt="">
+          </a>
         {{/each}}
       </div>
     {{/ionContent}}
