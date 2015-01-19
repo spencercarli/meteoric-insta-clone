@@ -2,7 +2,7 @@ Meteor.startup(function() {
   Factory.define('photo', Photos, {
     url: function() { return '/images/test.jpg'; },
     description: function() { return Fake.sentence(30); },
-    likes: function() { return 0; }
+    likes: function() { return []; }
   });
 
   if (Photos.find({}).count() === 0) {
