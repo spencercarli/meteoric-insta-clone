@@ -27,6 +27,8 @@ Meteor.startup(function() {
     emails: function() {
       return [{'address': Fake.user({fields: ['email']}).email}];
     },
+    following: function() { return []; },
+    followers: function() { return []; },
     profile: {
       isNew: function() { return true },
       createdAt: function() { return new Date() },

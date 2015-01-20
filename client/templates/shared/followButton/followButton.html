@@ -1,0 +1,13 @@
+<template name="followButton">
+  {{#unless isMe}}
+    {{#if currentlyFollowing}}
+      <button class="button button-balanced" data-action="unfollow">
+        {{#ionIcon icon="ios-checkmark-empty"}}{{/ionIcon}} Following
+      </button>
+    {{else}}
+      <button class="button button-stable" data-action="follow">
+        {{#ionIcon icon="plus-round"}}{{/ionIcon}} Follow
+      </button>
+    {{/if}}
+  {{/unless}}
+</template>
