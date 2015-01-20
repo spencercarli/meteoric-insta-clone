@@ -30,6 +30,43 @@ if (Meteor.isServer) {
       Photos.update({_id: photoId}, {
         $addToSet: { likes: userId }
       });
+    },
+
+    'Photos.upload': function(base64, fields) {
+      if (!this.userId) {
+        throw new Meteor.Error(403, 'Forbidden');
+      }
+      var Future = Npm.require('fibers/future');
+      var future = new Future;
+      var bytes = new Buffer(base64, 'base64');
+
+
+      var photo = Photos.insert({
+        ownerId: this.userId,
+        description: 'Not Implemented Yet',
+        likes: []
+      });
+
+      var writeStream = PhotoData.upsertStream(fields, function(err, file) {
+        Photos.update({_id: photo}, {
+          $set: {
+            url: Meteor.absoluteUrl() + "photodata/" + file.md5
+          }
+        });
+
+        future.return();
+      });
+
+      writeStream.on('error', function() {
+        console.log(arguments);
+        throw new Meteor.Error(403, 'Forbidden');
+      });
+
+      writeStream.end(bytes);
+
+      future.wait();
+
     }
+
   });
 }
