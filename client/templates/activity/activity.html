@@ -5,7 +5,16 @@
 
   {{#ionView}}
     {{#ionContent}}
-      <h1>Activity Page</h1>
+
+      {{#ionList class=""}}
+        {{#each currentUser.followedUser}}
+          {{#ionItem avatar=true}}
+            <img src="{{profile.avatarUrl}}" alt="">
+            You follow <a href="{{pathFor route='profile'}}">{{profile.username}}</a>
+          {{/ionItem}}
+        {{/each}}
+      {{/ionList}}
+
     {{/ionContent}}
   {{/ionView}}
 </template>

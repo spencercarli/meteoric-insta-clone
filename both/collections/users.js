@@ -20,6 +20,13 @@ Users.helpers({
 
   photos: function() {
     return Photos.find({});
+  },
+
+  followedUser: function() {
+    var user = Meteor.user();
+    if (user) {
+      return Users.find({_id: { $in: user.following }});
+    }
   }
 });
 
