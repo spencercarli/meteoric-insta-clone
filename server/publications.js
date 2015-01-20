@@ -1,9 +1,12 @@
 Meteor.publish('users', function() {
-  return Users.find()
+  return Users.find();
 });
 
 Meteor.publish('photos', function() {
-  return Photos.find()
+  return Photos.find({}, {
+    sort: { createdAt: -1 },
+    limit: 15
+  });
 });
 
 Meteor.publish('myPhotos', function(userId) {

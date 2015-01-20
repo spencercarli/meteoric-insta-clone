@@ -42,6 +42,14 @@
 
       {{/with}}
 
+      <div class="explore">
+        {{#each photo}}
+          <a href="{{pathFor 'photo'}}">
+            <img src="{{url}}" alt="">
+          </a>
+        {{/each}}
+      </div>
+
     {{/ionContent}}
   {{/ionView}}
 </template>
