@@ -1,6 +1,6 @@
 <template name="comments">
   {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton path="home"}}
+    {{>ionNavBackButton}}
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
@@ -15,7 +15,7 @@
           {{#ionItem avatar=true}}
             <img src="{{owner.profile.avatarUrl}}" alt="">
             <small class="pull-right">{{timeAgo}}</small>
-            <a href="{{pathFor route='profile'}}">{{owner.profile.username}}</a>
+            <a href="{{pathFor route='profile' data=data}}">{{owner.profile.username}}</a>
             <p>{{description}}</p>
           {{/ionItem}}
         {{/with}}

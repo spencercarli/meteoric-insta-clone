@@ -55,6 +55,7 @@
   .thumbnail {
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: cover !important;
     width: 100vw;
     height: 100vw;
   }
@@ -67,11 +68,12 @@
 
 /* EXPLORE PAGE */
 .explore {
-  text-align: center;
+  width: 98%;
+  margin: 0 auto;
   padding: 10px 0;
 
   img {
-    width: 32vw;
+    width: 31.93vw;
     height: 32vw;
   }
 }
