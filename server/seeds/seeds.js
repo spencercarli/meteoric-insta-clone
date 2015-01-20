@@ -1,4 +1,7 @@
 Meteor.startup(function() {
+
+  // STATIC CONTENT
+
   var avatars = [
     "https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg",
     "https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg",
@@ -10,11 +13,23 @@ Meteor.startup(function() {
     "https://s3.amazonaws.com/uifaces/faces/twitter/jaredbooye/128.jpg"
   ];
 
-  Factory.define('user', Users, {
+  var stock = [
+    "/images/stock/1.jpeg",
+    "/images/stock/2.jpg",
+    "/images/stock/3.jpg",
+    "/images/stock/4.jpg",
+    "/images/stock/5.jpg",
+  ];
+
+  // FACTORY DEFINITIONS
+
+  Factory.define('user', Users.direct, {
     emails: function() {
       return [{'address': Fake.user({fields: ['email']}).email}];
     },
     profile: {
+      isNew: function() { return true },
+      createdAt: function() { return new Date() },
       name: function() {
         return Fake.user({fields: ['fullname']}).fullname;
       },
@@ -27,12 +42,32 @@ Meteor.startup(function() {
     }
   });
 
+  Factory.define('photo', Photos, {
+    url: function() { return Random.choice(stock); },
+    description: function() { return Fake.sentence(30); },
+    likes: function() { return []; }
+  });
+
+  // SEED DATA INSERTION
+
   if (Users.find({}).count() === 0) {
     console.log('Inserting Users');
     _(10).times(function(n) {
       Factory.create('user');
     });
 
+  }
+
+  if (Photos.find({}).count() === 0) {
+    console.log('Inserting Photos');
+
+    Users.find().forEach(function(user) {
+      _(3).times(function(n) {
+        Factory.create('photo', {
+          ownerId: user._id
+        });
+      });
+    });
   }
 
 });

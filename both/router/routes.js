@@ -40,9 +40,7 @@ Router.route('/', {
   name: 'home',
   controller: 'InController',
   waitOn: function() {
-    return [
-      Meteor.subscribe('photos')
-    ];
+    return Meteor.subscribe('photos');
   },
   data: function() {
     return {
@@ -151,6 +149,6 @@ Router.route('/sign-out', {
   onBeforeAction: function() {
     Meteor.logout();
     Router.go('account')
-    this.next();
+    return this.next();
   }
 })
