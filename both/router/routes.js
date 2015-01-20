@@ -92,12 +92,14 @@ Router.route('/comments/:_id', {
   controller: 'InController',
   waitOn: function() {
     return [
-      Meteor.subscribe('comments', this.params._id)
+      Meteor.subscribe('comments', this.params._id),
+      Meteor.subscribe('users'),
+      Meteor.subscribe('photo', this.params._id)
     ];
   },
   data: function() {
     return {
-      photo: this.params._id,
+      photo: Photos.findOne({_id: this.params._id}),
       comment: Comments.find({}, {sort: { createdAt: 1 }})
     };
   }

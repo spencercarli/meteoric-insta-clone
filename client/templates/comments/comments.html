@@ -9,31 +9,38 @@
 
   {{#ionView}}
     {{#ionContent}}
-      {{#each comment}}
-        {{comment}}
-      {{/each}}
 
       {{#ionList class=""}}
-        {{#each item}}
-          {{#ionItem}}
+        {{#with photo}}
+          {{#ionItem avatar=true}}
+            <img src="{{owner.profile.avatarUrl}}" alt="">
+            <small class="pull-right">{{timeAgo}}</small>
+            <a href="">{{owner.profile.username}}</a>
+            <p>{{description}}</p>
+          {{/ionItem}}
+        {{/with}}
+
+        {{#each comment}}
+          {{#ionItem avatar=true}}
+            <img src="{{owner.profile.avatarUrl}}" alt="">
+            <small class="pull-right">{{timeAgo}}</small>
+            <a href="">{{owner.profile.username}}</a>
             <p>{{comment}}</p>
           {{/ionItem}}
         {{/each}}
       {{/ionList}}
 
-      <div class="list">
-
-        <div class="item item-input-inset">
-          <label class="item-input-wrapper">
-            <input type="text" placeholder="Add a comment..." focus>
-          </label>
-          <button class="button button-small button-balanced" data-action="send">
-            Send
-          </button>
-        </div>
-
-      </div>
-
     {{/ionContent}}
+
+    {{#ionFooterBar}}
+
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Add a comment...">
+      </label>
+      <button class="button button-small button-balanced" data-action="send">
+        Send
+      </button>
+
+    {{/ionFooterBar}}
   {{/ionView}}
 </template>

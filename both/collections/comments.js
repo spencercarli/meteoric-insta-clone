@@ -4,6 +4,10 @@ Comments.helpers({
   owner: function() {
     return Users.findOne({_id: this.ownerId});
   },
+
+  timeAgo: function() {
+    return moment(this.createdAt).fromNow(true);
+  }
 });
 
 Comments.before.insert(function(userId, doc){
@@ -17,7 +21,7 @@ if (Meteor.isServer) {
       Comments.insert({
         comment: comment,
         photoId: photoId,
-        userId: this.userId
+        ownerId: this.userId
       });
     }
   });

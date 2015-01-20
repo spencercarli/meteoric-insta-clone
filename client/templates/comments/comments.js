@@ -3,7 +3,7 @@ Template.comments.events({
     var input = $('input[type=text]');
     var val = input.val();
     if (val.length > 0) {
-      Meteor.call('Comments.create', val, Router.current().data().photo);
+      Meteor.call('Comments.create', val, Router.current().data().photo._id);
     }
     input.val('');
   }
