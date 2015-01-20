@@ -32,6 +32,9 @@
         {{> ionIcon icon='chatbubble'}}
       </div>
       <div class="col">
+        {{#with owner}}
+          <a href="{{pathFor route='profile'}}">{{profile.username}}</a>
+        {{/with}}
         {{description}}
       </div>
     </div>

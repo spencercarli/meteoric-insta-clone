@@ -16,6 +16,10 @@ Users.helpers({
       following = true;
     }
     return following;
+  },
+
+  photos: function() {
+    return Photos.find({});
   }
 });
 

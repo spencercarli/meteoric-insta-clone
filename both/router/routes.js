@@ -40,7 +40,7 @@ Router.route('/', {
   name: 'home',
   controller: 'InController',
   waitOn: function() {
-    return Meteor.subscribe('photos');
+    return Meteor.subscribe('followingPhotos', Meteor.user().following);
   },
   data: function() {
     return {

@@ -13,6 +13,11 @@ Meteor.publish('userPhotos', function(userId) {
   return Photos.find({ownerId: userId});
 });
 
+Meteor.publish('followingPhotos', function(following) {
+  following = following || [];
+  return Photos.find({ownerId: { $in: following }});
+});
+
 Meteor.publish('photo', function(_id) {
   return Photos.find({_id: _id});
 });
