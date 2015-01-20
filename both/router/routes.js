@@ -1,6 +1,9 @@
 // CONTROLLERS
 
 InController = RouteController.extend({
+  waitOn: function() {
+    return Meteor.subscribe('users');
+  },
   onBeforeAction: function() {
     if (Meteor.loggingIn()) {
       return;
@@ -38,7 +41,6 @@ Router.route('/', {
   controller: 'InController',
   waitOn: function() {
     return [
-      Meteor.subscribe('users'),
       Meteor.subscribe('photos')
     ];
   },
@@ -55,7 +57,6 @@ Router.route('/explore', {
   controller: 'InController',
   waitOn: function() {
     return [
-      Meteor.subscribe('users'),
       Meteor.subscribe('photos')
     ];
   },
@@ -73,15 +74,34 @@ Router.route('/activity', {
 });
 
 Router.route('/profile', {
-  name: 'profile',
+  name: 'myProfile',
+  template: 'profile',
   controller: 'InController',
   waitOn: function() {
     return [
-      Meteor.subscribe('myPhotos', Meteor.userId())
+      Meteor.subscribe('userPhotos', Meteor.userId())
     ];
   },
   data: function() {
     return {
+      user: Meteor.user(),
+      photo: Photos.find({}, {sort: { createdAt: -1 }})
+    }
+  }
+});
+
+Router.route('/profile/:_id', {
+  name: 'profile',
+  template: 'profile',
+  controller: 'InController',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('userPhotos', this.params._id)
+    ];
+  },
+  data: function() {
+    return {
+      user: Users.findOne({_id: this.params._id}),
       photo: Photos.find({}, {sort: { createdAt: -1 }})
     }
   }
@@ -93,7 +113,6 @@ Router.route('/comments/:_id', {
   waitOn: function() {
     return [
       Meteor.subscribe('comments', this.params._id),
-      Meteor.subscribe('users'),
       Meteor.subscribe('photo', this.params._id)
     ];
   },

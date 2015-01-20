@@ -9,7 +9,7 @@ Meteor.publish('photos', function() {
   });
 });
 
-Meteor.publish('myPhotos', function(userId) {
+Meteor.publish('userPhotos', function(userId) {
   return Photos.find({ownerId: userId});
 });
 

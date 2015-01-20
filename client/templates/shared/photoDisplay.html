@@ -6,7 +6,9 @@
           <img class="avatar" src="{{profile.avatarUrl}}" alt="">
         </div>
         <div class="col col-center">
-          {{profile.username}}
+          <a href="{{pathFor route='profile'}}">
+            {{profile.username}}
+          </a>
         </div>
         <div class="col col-center text-right">
           {{> ionIcon icon='clock'}} {{../timeAgo}}

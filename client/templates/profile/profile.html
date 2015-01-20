@@ -1,11 +1,11 @@
 <template name="profile">
   {{#contentFor "headerTitle"}}
-    <h1 class="title">{{currentUser.profile.username}}</h1>
+    <h1 class="title">{{user.profile.username}}</h1>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
-      {{#with currentUser}}
+      {{#with user}}
         <div class="row">
           <div class="col col-33">
             <img class="avatar" src="{{profile.avatarUrl}}" alt="">

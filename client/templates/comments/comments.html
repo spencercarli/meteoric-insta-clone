@@ -15,7 +15,7 @@
           {{#ionItem avatar=true}}
             <img src="{{owner.profile.avatarUrl}}" alt="">
             <small class="pull-right">{{timeAgo}}</small>
-            <a href="">{{owner.profile.username}}</a>
+            <a href="{{pathFor route='profile'}}">{{owner.profile.username}}</a>
             <p>{{description}}</p>
           {{/ionItem}}
         {{/with}}
@@ -24,7 +24,7 @@
           {{#ionItem avatar=true}}
             <img src="{{owner.profile.avatarUrl}}" alt="">
             <small class="pull-right">{{timeAgo}}</small>
-            <a href="">{{owner.profile.username}}</a>
+            <a href="{{pathFor route='profile' data=data }}">{{owner.profile.username}}</a>
             <p>{{comment}}</p>
           {{/ionItem}}
         {{/each}}

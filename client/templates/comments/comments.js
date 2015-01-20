@@ -1,3 +1,9 @@
+Template.comments.helpers({
+  data: function() {
+    return { _id: this.ownerId };
+  }
+});
+
 Template.comments.events({
   'click [data-action=send]': function(e, tmp) {
     var input = $('input[type=text]');
